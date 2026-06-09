@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as IndustriesRouteImport } from './routes/industries'
@@ -22,6 +23,11 @@ import { Route as ServicesCyberComplianceRouteImport } from './routes/services.c
 import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
 import { Route as ServicesAgenticAiRouteImport } from './routes/services.agentic-ai'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
   '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/services/agentic-ai': typeof ServicesAgenticAiRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
   '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
   '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/services/agentic-ai': typeof ServicesAgenticAiRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
   '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
   '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/services/agentic-ai': typeof ServicesAgenticAiRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
   '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/services'
+    | '/sitemap.xml'
     | '/services/agentic-ai'
     | '/services/ai-development'
     | '/services/cyber-compliance'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/services'
+    | '/sitemap.xml'
     | '/services/agentic-ai'
     | '/services/ai-development'
     | '/services/cyber-compliance'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/services'
+    | '/sitemap.xml'
     | '/services/agentic-ai'
     | '/services/ai-development'
     | '/services/cyber-compliance'
@@ -178,10 +190,18 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   InsightsRoute: typeof InsightsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -298,6 +318,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   InsightsRoute: InsightsRoute,
   ServicesRoute: ServicesRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
