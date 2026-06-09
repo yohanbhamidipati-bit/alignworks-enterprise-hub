@@ -9,38 +9,234 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesTestingRouteImport } from './routes/services.testing'
+import { Route as ServicesIvvRouteImport } from './routes/services.ivv'
+import { Route as ServicesCybersecurityRouteImport } from './routes/services.cybersecurity'
+import { Route as ServicesCyberComplianceRouteImport } from './routes/services.cyber-compliance'
+import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
+import { Route as ServicesAgenticAiRouteImport } from './routes/services.agentic-ai'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesTestingRoute = ServicesTestingRouteImport.update({
+  id: '/testing',
+  path: '/testing',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesIvvRoute = ServicesIvvRouteImport.update({
+  id: '/ivv',
+  path: '/ivv',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCybersecurityRoute = ServicesCybersecurityRouteImport.update({
+  id: '/cybersecurity',
+  path: '/cybersecurity',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCyberComplianceRoute = ServicesCyberComplianceRouteImport.update({
+  id: '/cyber-compliance',
+  path: '/cyber-compliance',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
+  id: '/ai-development',
+  path: '/ai-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAgenticAiRoute = ServicesAgenticAiRouteImport.update({
+  id: '/agentic-ai',
+  path: '/agentic-ai',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRoute
+  '/insights': typeof InsightsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/services/agentic-ai': typeof ServicesAgenticAiRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
+  '/services/cybersecurity': typeof ServicesCybersecurityRoute
+  '/services/ivv': typeof ServicesIvvRoute
+  '/services/testing': typeof ServicesTestingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRoute
+  '/insights': typeof InsightsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/services/agentic-ai': typeof ServicesAgenticAiRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
+  '/services/cybersecurity': typeof ServicesCybersecurityRoute
+  '/services/ivv': typeof ServicesIvvRoute
+  '/services/testing': typeof ServicesTestingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRoute
+  '/insights': typeof InsightsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/services/agentic-ai': typeof ServicesAgenticAiRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
+  '/services/cybersecurity': typeof ServicesCybersecurityRoute
+  '/services/ivv': typeof ServicesIvvRoute
+  '/services/testing': typeof ServicesTestingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/insights'
+    | '/services'
+    | '/sitemap.xml'
+    | '/services/agentic-ai'
+    | '/services/ai-development'
+    | '/services/cyber-compliance'
+    | '/services/cybersecurity'
+    | '/services/ivv'
+    | '/services/testing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/insights'
+    | '/services'
+    | '/sitemap.xml'
+    | '/services/agentic-ai'
+    | '/services/ai-development'
+    | '/services/cyber-compliance'
+    | '/services/cybersecurity'
+    | '/services/ivv'
+    | '/services/testing'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/insights'
+    | '/services'
+    | '/sitemap.xml'
+    | '/services/agentic-ai'
+    | '/services/ai-development'
+    | '/services/cyber-compliance'
+    | '/services/cybersecurity'
+    | '/services/ivv'
+    | '/services/testing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  IndustriesRoute: typeof IndustriesRoute
+  InsightsRoute: typeof InsightsRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +244,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/testing': {
+      id: '/services/testing'
+      path: '/testing'
+      fullPath: '/services/testing'
+      preLoaderRoute: typeof ServicesTestingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ivv': {
+      id: '/services/ivv'
+      path: '/ivv'
+      fullPath: '/services/ivv'
+      preLoaderRoute: typeof ServicesIvvRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cybersecurity': {
+      id: '/services/cybersecurity'
+      path: '/cybersecurity'
+      fullPath: '/services/cybersecurity'
+      preLoaderRoute: typeof ServicesCybersecurityRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cyber-compliance': {
+      id: '/services/cyber-compliance'
+      path: '/cyber-compliance'
+      fullPath: '/services/cyber-compliance'
+      preLoaderRoute: typeof ServicesCyberComplianceRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ai-development': {
+      id: '/services/ai-development'
+      path: '/ai-development'
+      fullPath: '/services/ai-development'
+      preLoaderRoute: typeof ServicesAiDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/agentic-ai': {
+      id: '/services/agentic-ai'
+      path: '/agentic-ai'
+      fullPath: '/services/agentic-ai'
+      preLoaderRoute: typeof ServicesAgenticAiRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesAgenticAiRoute: typeof ServicesAgenticAiRoute
+  ServicesAiDevelopmentRoute: typeof ServicesAiDevelopmentRoute
+  ServicesCyberComplianceRoute: typeof ServicesCyberComplianceRoute
+  ServicesCybersecurityRoute: typeof ServicesCybersecurityRoute
+  ServicesIvvRoute: typeof ServicesIvvRoute
+  ServicesTestingRoute: typeof ServicesTestingRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAgenticAiRoute: ServicesAgenticAiRoute,
+  ServicesAiDevelopmentRoute: ServicesAiDevelopmentRoute,
+  ServicesCyberComplianceRoute: ServicesCyberComplianceRoute,
+  ServicesCybersecurityRoute: ServicesCybersecurityRoute,
+  ServicesIvvRoute: ServicesIvvRoute,
+  ServicesTestingRoute: ServicesTestingRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  IndustriesRoute: IndustriesRoute,
+  InsightsRoute: InsightsRoute,
+  ServicesRoute: ServicesRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
