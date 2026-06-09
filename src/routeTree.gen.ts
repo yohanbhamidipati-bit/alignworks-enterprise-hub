@@ -15,6 +15,12 @@ import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesTestingRouteImport } from './routes/services.testing'
+import { Route as ServicesIvvRouteImport } from './routes/services.ivv'
+import { Route as ServicesCybersecurityRouteImport } from './routes/services.cybersecurity'
+import { Route as ServicesCyberComplianceRouteImport } from './routes/services.cyber-compliance'
+import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
+import { Route as ServicesAgenticAiRouteImport } from './routes/services.agentic-ai'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -46,6 +52,36 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesTestingRoute = ServicesTestingRouteImport.update({
+  id: '/testing',
+  path: '/testing',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesIvvRoute = ServicesIvvRouteImport.update({
+  id: '/ivv',
+  path: '/ivv',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCybersecurityRoute = ServicesCybersecurityRouteImport.update({
+  id: '/cybersecurity',
+  path: '/cybersecurity',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCyberComplianceRoute = ServicesCyberComplianceRouteImport.update({
+  id: '/cyber-compliance',
+  path: '/cyber-compliance',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
+  id: '/ai-development',
+  path: '/ai-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAgenticAiRoute = ServicesAgenticAiRouteImport.update({
+  id: '/agentic-ai',
+  path: '/agentic-ai',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +89,13 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/agentic-ai': typeof ServicesAgenticAiRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
+  '/services/cybersecurity': typeof ServicesCybersecurityRoute
+  '/services/ivv': typeof ServicesIvvRoute
+  '/services/testing': typeof ServicesTestingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +103,13 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/agentic-ai': typeof ServicesAgenticAiRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
+  '/services/cybersecurity': typeof ServicesCybersecurityRoute
+  '/services/ivv': typeof ServicesIvvRoute
+  '/services/testing': typeof ServicesTestingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,7 +118,13 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/agentic-ai': typeof ServicesAgenticAiRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/cyber-compliance': typeof ServicesCyberComplianceRoute
+  '/services/cybersecurity': typeof ServicesCybersecurityRoute
+  '/services/ivv': typeof ServicesIvvRoute
+  '/services/testing': typeof ServicesTestingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +135,26 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/services'
+    | '/services/agentic-ai'
+    | '/services/ai-development'
+    | '/services/cyber-compliance'
+    | '/services/cybersecurity'
+    | '/services/ivv'
+    | '/services/testing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/industries' | '/insights' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/industries'
+    | '/insights'
+    | '/services'
+    | '/services/agentic-ai'
+    | '/services/ai-development'
+    | '/services/cyber-compliance'
+    | '/services/cybersecurity'
+    | '/services/ivv'
+    | '/services/testing'
   id:
     | '__root__'
     | '/'
@@ -91,6 +163,12 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/services'
+    | '/services/agentic-ai'
+    | '/services/ai-development'
+    | '/services/cyber-compliance'
+    | '/services/cybersecurity'
+    | '/services/ivv'
+    | '/services/testing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -99,7 +177,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   IndustriesRoute: typeof IndustriesRoute
   InsightsRoute: typeof InsightsRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -146,8 +224,72 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/testing': {
+      id: '/services/testing'
+      path: '/testing'
+      fullPath: '/services/testing'
+      preLoaderRoute: typeof ServicesTestingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ivv': {
+      id: '/services/ivv'
+      path: '/ivv'
+      fullPath: '/services/ivv'
+      preLoaderRoute: typeof ServicesIvvRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cybersecurity': {
+      id: '/services/cybersecurity'
+      path: '/cybersecurity'
+      fullPath: '/services/cybersecurity'
+      preLoaderRoute: typeof ServicesCybersecurityRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cyber-compliance': {
+      id: '/services/cyber-compliance'
+      path: '/cyber-compliance'
+      fullPath: '/services/cyber-compliance'
+      preLoaderRoute: typeof ServicesCyberComplianceRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ai-development': {
+      id: '/services/ai-development'
+      path: '/ai-development'
+      fullPath: '/services/ai-development'
+      preLoaderRoute: typeof ServicesAiDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/agentic-ai': {
+      id: '/services/agentic-ai'
+      path: '/agentic-ai'
+      fullPath: '/services/agentic-ai'
+      preLoaderRoute: typeof ServicesAgenticAiRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesAgenticAiRoute: typeof ServicesAgenticAiRoute
+  ServicesAiDevelopmentRoute: typeof ServicesAiDevelopmentRoute
+  ServicesCyberComplianceRoute: typeof ServicesCyberComplianceRoute
+  ServicesCybersecurityRoute: typeof ServicesCybersecurityRoute
+  ServicesIvvRoute: typeof ServicesIvvRoute
+  ServicesTestingRoute: typeof ServicesTestingRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAgenticAiRoute: ServicesAgenticAiRoute,
+  ServicesAiDevelopmentRoute: ServicesAiDevelopmentRoute,
+  ServicesCyberComplianceRoute: ServicesCyberComplianceRoute,
+  ServicesCybersecurityRoute: ServicesCybersecurityRoute,
+  ServicesIvvRoute: ServicesIvvRoute,
+  ServicesTestingRoute: ServicesTestingRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -155,7 +297,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   IndustriesRoute: IndustriesRoute,
   InsightsRoute: InsightsRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
