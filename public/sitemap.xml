@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/about</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services/agentic-ai</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services/ai-development</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services/cybersecurity</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services/cyber-compliance</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services/ivv</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/services/testing</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/industries</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/insights</loc><changefreq>weekly</changefreq></url>
+  <url><loc>/contact</loc><changefreq>weekly</changefreq></url>
+</urlset>

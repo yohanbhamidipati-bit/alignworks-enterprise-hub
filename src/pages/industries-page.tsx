@@ -1,19 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, FinalCTA, BulletSection } from "@/components/aw-ui";
-
-export const Route = createFileRoute("/industries")({
-  head: () => ({
-    meta: [
-      { title: "Industries — Government and Enterprise Expertise | ALIGNWORKS" },
-      { name: "description", content: "Industry expertise across federal, state, public sector, government contractors, and enterprise organizations." },
-      { property: "og:title", content: "ALIGNWORKS Industries" },
-      { property: "og:description", content: "Industry expertise that delivers results." },
-      { property: "og:url", content: "/industries" },
-    ],
-    links: [{ rel: "canonical", href: "/industries" }],
-  }),
-  component: IndustriesPage,
-});
+import { BulletSection, FinalCTA, PageHero } from "@/components/aw-ui";
+import { Seo } from "@/lib/seo";
 
 const INDUSTRIES = [
   {
@@ -42,9 +28,17 @@ const INDUSTRIES = [
   },
 ];
 
-function IndustriesPage() {
+export function IndustriesPage() {
   return (
     <>
+      <Seo
+        title="Industries — Government and Enterprise Expertise | ALIGNWORKS"
+        description="Industry expertise across federal, state, public sector, government contractors, and enterprise organizations."
+        path="/industries"
+        ogTitle="ALIGNWORKS Industries"
+        ogDescription="Industry expertise that delivers results."
+      />
+
       <PageHero
         eyebrow="Industries"
         title="Industry Expertise That Delivers Results"

@@ -1,25 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/aw-ui";
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact ALIGNWORKS — Let's Start the Conversation" },
-      { name: "description", content: "Connect with ALIGNWORKS to discuss technology, AI, cybersecurity, compliance, and modernization objectives." },
-      { property: "og:title", content: "Contact ALIGNWORKS" },
-      { property: "og:description", content: "Book an initial discovery call." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: ContactPage,
-});
+import { Seo } from "@/lib/seo";
 
 const SERVICES = ["Agentic AI", "AI Development", "Cybersecurity", "Cyber Compliance", "IV&V", "Testing Services", "Digital Transformation", "Other"];
 
-function ContactPage() {
+export function ContactPage() {
   return (
     <>
+      <Seo
+        title="Contact ALIGNWORKS — Let's Start the Conversation"
+        description="Connect with ALIGNWORKS to discuss technology, AI, cybersecurity, compliance, and modernization objectives."
+        path="/contact"
+        ogTitle="Contact ALIGNWORKS"
+        ogDescription="Book an initial discovery call."
+      />
+
       <PageHero
         eyebrow="Contact"
         title="Let's Start the Conversation"

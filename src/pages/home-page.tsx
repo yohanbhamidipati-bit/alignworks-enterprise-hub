@@ -1,5 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+
 import heroImage from "@/assets/hero-executive.jpg";
+import { Seo } from "@/lib/seo";
 import {
   AwButton,
   Eyebrow,
@@ -8,28 +10,6 @@ import {
   NumberedList,
   SectionHeading,
 } from "@/components/aw-ui";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "ALIGNWORKS — Technology Consulting for Mission-Critical Organizations" },
-      {
-        name: "description",
-        content:
-          "ALIGNWORKS delivers AI, cybersecurity, compliance, IV&V, testing, and digital transformation consulting for government agencies, contractors, and enterprises.",
-      },
-      { property: "og:title", content: "ALIGNWORKS — Technology Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Aligning Technology, Security, Compliance, and Innovation for Mission Success.",
-      },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Index,
-});
 
 const TRUST = [
   "Agentic AI",
@@ -118,10 +98,26 @@ const INSIGHTS = [
   { category: "Compliance", title: "FedRAMP, CMMC, and the New Compliance Operating Model", excerpt: "Aligning evidence, automation, and continuous monitoring into a single compliance discipline." },
 ];
 
-function Index() {
+export function HomePage() {
   return (
     <>
-      {/* HERO */}
+      <Seo
+        title="ALIGNWORKS — Technology Consulting for Mission-Critical Organizations"
+        description="ALIGNWORKS delivers AI, cybersecurity, compliance, IV&V, testing, and digital transformation consulting for government agencies, contractors, and enterprises."
+        path="/"
+        ogTitle="ALIGNWORKS — Technology Consulting"
+        ogDescription="Aligning Technology, Security, Compliance, and Innovation for Mission Success."
+        image={heroImage}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ALIGNWORKS",
+          url: typeof window !== "undefined" ? window.location.origin : "",
+          description:
+            "Technology consulting for AI, cybersecurity, compliance, IV&V, testing, and digital transformation.",
+        }}
+      />
+
       <section className="border-b border-border">
         <div className="container-aw grid lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="lg:col-span-7">
@@ -146,13 +142,13 @@ function Index() {
                 className="h-full w-full object-cover grayscale"
                 width={1024}
                 height={1280}
+                loading="eager"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* TRUST BAR */}
       <section className="border-b border-border bg-[var(--surface)]">
         <div className="container-aw py-8 flex flex-wrap items-center justify-between gap-x-10 gap-y-3">
           {TRUST.map((t) => (
@@ -163,7 +159,6 @@ function Index() {
         </div>
       </section>
 
-      {/* COMPANY INTRO */}
       <section className="section-aw">
         <div className="container-aw">
           <SectionHeading
@@ -186,7 +181,6 @@ function Index() {
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="section-aw border-t border-border bg-[var(--surface)]">
         <div className="container-aw">
           <SectionHeading eyebrow="Services" title="Core Capabilities" description="Six integrated practice areas built to solve the most consequential technology, security, and compliance challenges facing modern organizations." />
@@ -207,7 +201,6 @@ function Index() {
         </div>
       </section>
 
-      {/* OPERATING MODEL */}
       <section className="section-aw">
         <div className="container-aw">
           <SectionHeading eyebrow="Operating Model" title="How We Deliver Results" description="A disciplined six-stage delivery framework that converts strategic intent into measurable, sustainable outcomes." />
@@ -217,7 +210,6 @@ function Index() {
         </div>
       </section>
 
-      {/* WHY ALIGNWORKS */}
       <section className="section-aw border-t border-border bg-[var(--surface)]">
         <div className="container-aw">
           <SectionHeading eyebrow="Why ALIGNWORKS" title="Why Organizations Choose ALIGNWORKS" />
@@ -227,7 +219,6 @@ function Index() {
         </div>
       </section>
 
-      {/* INDUSTRIES */}
       <section className="section-aw">
         <div className="container-aw">
           <SectionHeading eyebrow="Industries" title="Industry Expertise" description="Deep experience across the sectors where reliability, security, and compliance are non-negotiable." />
@@ -245,7 +236,6 @@ function Index() {
         </div>
       </section>
 
-      {/* INSIGHTS */}
       <section className="section-aw border-t border-border bg-[var(--surface)]">
         <div className="container-aw">
           <div className="flex flex-wrap items-end justify-between gap-6">

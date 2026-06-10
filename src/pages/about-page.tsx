@@ -1,19 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, SectionHeading, FeatureGrid, FinalCTA } from "@/components/aw-ui";
-
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About ALIGNWORKS — Building Trust Through Technology Excellence" },
-      { name: "description", content: "ALIGNWORKS is a technology consulting firm focused on AI, cybersecurity, compliance, IV&V, and modernization for government and enterprise." },
-      { property: "og:title", content: "About ALIGNWORKS" },
-      { property: "og:description", content: "A trusted partner for mission-critical technology initiatives." },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-  component: AboutPage,
-});
+import { FeatureGrid, FinalCTA, PageHero, SectionHeading } from "@/components/aw-ui";
+import { Seo } from "@/lib/seo";
 
 const VALUES = [
   { title: "Integrity", description: "We do what we say. Every commitment is honored, every recommendation is independent." },
@@ -23,9 +9,17 @@ const VALUES = [
   { title: "Excellence", description: "We hold ourselves to a higher standard — the standard expected of mission-critical work." },
 ];
 
-function AboutPage() {
+export function AboutPage() {
   return (
     <>
+      <Seo
+        title="About ALIGNWORKS — Building Trust Through Technology Excellence"
+        description="ALIGNWORKS is a technology consulting firm focused on AI, cybersecurity, compliance, IV&V, and modernization for government and enterprise."
+        path="/about"
+        ogTitle="About ALIGNWORKS"
+        ogDescription="A trusted partner for mission-critical technology initiatives."
+      />
+
       <PageHero
         eyebrow="About ALIGNWORKS"
         title="Building Trust Through Technology Excellence"
