@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { NavLink, Link } from "react-router-dom";
+import awMonogram from "@/assets/aw-monogram.png";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -13,19 +14,21 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container-aw flex h-20 items-center justify-between">
-        <Link to="/" className="text-[20px] font-bold tracking-[0.16em] text-foreground">
-          ALIGNWORKS
+        <Link to="/" className="flex items-center gap-3 text-[20px] font-bold tracking-[0.16em] text-foreground">
+          <img src={awMonogram} alt="ALIGNWORKS monogram" className="h-9 w-9 object-contain" width={36} height={36} />
+          <span>ALIGNWORKS</span>
         </Link>
         <nav className="hidden lg:flex items-center gap-10">
           {NAV.map((item) => (
-            <Link
+            <NavLink
               key={item.to}
               to={item.to}
-              className="text-[14px] font-medium text-foreground/80 hover:text-foreground transition-colors"
-              activeProps={{ className: "text-foreground" }}
+              className={({ isActive }) =>
+                `text-[14px] font-medium transition-colors hover:text-foreground ${isActive ? "text-foreground" : "text-foreground/80"}`
+              }
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
         <Link

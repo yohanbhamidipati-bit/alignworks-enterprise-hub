@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import awMonogram from "@/assets/aw-monogram.png";
 
 const COLS: { title: string; links: { label: string; to: string }[] }[] = [
   {
@@ -44,7 +45,10 @@ export function SiteFooter() {
       <div className="container-aw py-20">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
           <div className="col-span-2 md:col-span-1">
-            <div className="text-[18px] font-bold tracking-[0.16em] text-foreground">ALIGNWORKS</div>
+            <div className="flex items-center gap-3 text-[18px] font-bold tracking-[0.16em] text-foreground">
+              <img src={awMonogram} alt="ALIGNWORKS monogram" className="h-9 w-9 object-contain" width={36} height={36} />
+              <span>ALIGNWORKS</span>
+            </div>
             <p className="mt-4 text-[14px] leading-relaxed text-[var(--muted-text)] max-w-[240px]">
               Aligning Technology, Security, Compliance, and Innovation for Mission Success.
             </p>
