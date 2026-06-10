@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import awMonogram from "@/assets/aw-monogram.png";
+import awMonogram from "@/assets/aw-monogram.svg";
 
 const COLS: { title: string; links: { label: string; to: string }[] }[] = [
   {

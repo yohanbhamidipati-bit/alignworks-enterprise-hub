@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import awMonogram from "@/assets/aw-monogram.png";
+import awMonogram from "@/assets/aw-monogram.svg";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -23,6 +23,7 @@ export function SiteHeader() {
             <NavLink
               key={item.to}
               to={item.to}
+              end={item.to === "/"}
               className={({ isActive }) =>
                 `text-[14px] font-medium transition-colors hover:text-foreground ${isActive ? "text-foreground" : "text-foreground/80"}`
               }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">ALIGNWORKS monogram</title>
+  <desc id="desc">Geometric AW monogram in deep navy.</desc>
+  <rect width="256" height="256" rx="24" fill="#0B1F3A"/>
+  <path d="M54 188 102 68h22l46 120h-20l-10-27H84l-10 27H54Zm37-44h42l-21-58-21 58Zm78 44V68h19l14 21 14-21h19v120h-20V103l-13 19h-1l-13-19v85h-19Z" fill="#fff"/>
+</svg>
